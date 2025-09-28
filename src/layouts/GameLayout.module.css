@@ -1,0 +1,27 @@
+.container {
+	background: var(--card);
+	padding: 20px;
+	border-radius: 12px;
+	box-shadow: 0 6px 18px rgba(36, 37, 42, 0.08);
+	width: 360px;
+}
+.title {
+	margin: 0 0 12px 0;
+	font-size: 20px;
+	color: #111;
+}
+.controls {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	margin-bottom: 12px;
+}
+.restart {
+	width: 100%;
+	padding: 10px 12px;
+	border-radius: 8px;
+	border: 0;
+	background: var(--accent);
+	color: white;
+	cursor: pointer;
+}

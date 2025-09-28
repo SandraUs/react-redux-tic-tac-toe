@@ -1,0 +1,24 @@
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, 72px);
+	gap: 8px;
+}
+.cell {
+	height: 72px;
+	width: 72px;
+	background: linear-gradient(180deg, #fff, #fbfdff);
+	border-radius: 8px;
+	border: 1px solid #e6e9f2;
+	font-size: 28px;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.cell:disabled {
+	opacity: 0.7;
+	cursor: not-allowed;
+}
+.symbol {
+	font-weight: 700;
+}
