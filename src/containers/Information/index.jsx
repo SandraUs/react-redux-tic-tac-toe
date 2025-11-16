@@ -1,21 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import InformationLayout from '../../layouts/InformationLayout';
+import { useSyncExternalStore } from 'react';
+import { store } from '../../store';
 
+export default function Information() {
+  const state = useSyncExternalStore(
+    store.subscribe,
+    store.getState,
+    store.getState
+  );
 
-export default function Information({ currentPlayer, isGameEnded, isDraw }){
-return (
-<InformationLayout
-currentPlayer={currentPlayer}
-isGameEnded={isGameEnded}
-isDraw={isDraw}
-/>
-)
-}
-
-
-Information.propTypes = {
-currentPlayer: PropTypes.string.isRequired,
-isGameEnded: PropTypes.bool.isRequired,
-isDraw: PropTypes.bool.isRequired,
+  return (
+    <div>
+      {state.isGameEnded && <h2>Игра окончена! Победил {state.currentPlayer}</h2>}
+      {state.isDraw && <h2>Ничья!</h2>}
+      {!state.isGameEnded && !state.isDraw && (
+        <h2>Ход игрока: {state.currentPlayer}</h2>
+      )}
+    </div>
+  );
 }

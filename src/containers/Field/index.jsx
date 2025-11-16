@@ -1,21 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import FieldLayout from '../../layouts/FieldLayout';
+import { useSyncExternalStore } from 'react';
+import { store } from '../../store';
 
+export default function Field() {
+  const state = useSyncExternalStore(
+    store.subscribe,
+    store.getState,
+    store.getState
+  );
 
-export default function Field({ field, onCellClick, isGameEnded }){
-return (
-<FieldLayout
-field={field}
-onCellClick={onCellClick}
-isGameEnded={isGameEnded}
-/>
-)
-}
+  const onClick = (index) => {
+    if (state.board[index] || state.isGameEnded) return;
 
+    store.dispatch({ type: 'MAKE_MOVE', index });
+  };
 
-Field.propTypes = {
-field: PropTypes.arrayOf(PropTypes.string).isRequired,
-onCellClick: PropTypes.func.isRequired,
-isGameEnded: PropTypes.bool.isRequired,
+  return (
+    <div    >
+      {state.board.map((cell, i) => (
+        <div
+          key={i}
+          onClick={() => onClick(i)}
+        >
+          {cell}
+        </div>
+      ))}
+    </div>
+  );
 }
