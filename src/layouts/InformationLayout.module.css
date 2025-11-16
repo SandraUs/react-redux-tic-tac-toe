@@ -1,7 +1,9 @@
 .info {
-	padding: 8px 12px;
-	background: #f4f6ff;
-	border-radius: 8px;
-	color: #222;
+	margin-bottom: 20px;
+}
+
+.text {
+	font-size: 22px;
 	font-weight: 600;
+	color: #333;
 }
